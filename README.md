@@ -1,2 +1,2 @@
-# GitProject
-Exercise
+typingclub.com
+github.com
