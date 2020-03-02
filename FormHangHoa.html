@@ -4,48 +4,136 @@
     <meta charset="UTF-8">
     <title>Form Hang Hoa</title>
 </head>
-<style>
 
-    p{
-        width: 50%;
-        float: left;
-    }
-    span {
-        color: red;
-    }
-</style>
 <body>
+<fieldset style="width: 30%; margin: 0 auto;">
+    <legend>Login System</legend>
+    <table>
+        <tr>
+            <td>UserName</td>
+            <td><input type="text" name="Name" placeholder="abc@example.com"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="Pass"></td>
+        </tr>
+    </table>
+</fieldset><br>
 <fieldset style="width: 40%; margin: 0 auto;">
     <legend>NHẬP THÔNG TIN HÀNG HÓA</legend>
     <form method="POST" action="#">
-        <p><span>Mã Hàng Hóa:</span><input type="text" name="MaHH" placeholder="ma gi"></p>
-        <p>Tên hàng hóa:
-        <input type="text" name="NhapTen" placeholder="Ten la gi">
-        </p>
-        <p>Số Lượng:
-        <input type="number" name="SoLuong">
-        </p>
-        <p>Đơn Vị Tính:
-        <input type="text" name="DVT">
-        </p>
-        <p>Ngày Nhập Kho:
-        <input type="date" name="Date">
-        </p>
-        <p>Tồn Kho:
-        <input type="text" name="TonKho">
-        </p>
-        <p>NV Nhập:
-        <select>
-            <option value="NV1">Nguyen Van A</option>
-            <option value="NV2">Tran Van T</option>
-            <option value="NV3">Nguyen D</option>
-            <option value="NV4">Nguyen Tan Hung</option>
-            <option value="NV5">john</option>
-        </select>
-        </p><br>
+        <table>
+            <tr>
+                 <td>Người Nhập<sup style="color: red;">(*)</sup></td>
+                <td><select style="width: 173px;">
+                    <option value="NV1">Nguyen Van A</option>
+                    <option value="NV2">Tran Van T</option>
+                    <option value="NV3">Nguyen D</option>
+                    <option value="NV4">Nguyen Tan Hung</option>
+                    <option value="NV5">john</option>
+                </select>
+                <select>
+                    <option>Ca 1</option>
+                    <option>Ca 2</option>
+                    <option>Ca 3</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Ngày Nhập Kho<sup style="color: red;">(*)</sup></td>
+                <td><input type="date" name="NgayNK"></td>
+            </tr>
+            <tr>
+                <td>Mã Hàng<sup style="color: red;">(*)</sup></td>
+                <td><input type="text" name="MaHang" placeholder="Eg: A1B2C3"></td>
+            </tr>
+            <tr>
+                <td>Tên Hàng<sup style="color: red;">(*)</sup></td>
+                <td><input type="text" name="TenHang" placeholder="Eg: Máy tính Asus"></td>
+            </tr>
+            <tr>
+                <td>Loại Hàng<sup style="color: red;">(*)</sup></td>
+                <td><input type="radio" name="1">Gia dụng <input type="radio" name="1">Điện tử <input type="radio" name="1">Thực phẩm</td>
+            </tr>
+            <tr>
+                <td>Đơn Vị Tính<sup style="color: red;">(*)</sup></td>
+                <td><input type="text" name="DVT"></td>
+            </tr>
+            <tr>
+                <td>Số Lượng<sup style="color: red;">(*)</sup></td>
+                <td><input type="number" name="SoLuong"></td>
+            </tr>
+            <tr>
+                <td>Thuộc Tính<sup style="color: red;">(*)</sup></td>
+                <td><input type="checkbox">Hàng dễ vỡ<br>
+                <input type="checkbox">Hàng đi trong ngày<br>
+                <input type="checkbox">Hàng lưu kho</td>
+            </tr>
+            <tr>
+                <td>Mô Tả</td>
+                <td><textarea cols="50" rows="5" placeholder="Chọn tệp để import mô tả vào đây!"></textarea> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="file" name="FileName"></td>
+            </tr>
+            <tr>
+                <td>Lưu Kho<sup style="color: red;">(*)</sup></td>
+                <td><select>
+                    <option>Kho A</option>
+                    <option>Kho B</option>
+                    <option>Kho C</option>
+                    <option>Kho D</option>
+                </select></td>
+            </tr>
+        </table>
+
         <input type="submit" name="btnNhap" value="Nhập Kho" style="margin-left: 35%;">
         <input type="reset" name="btnReset" value="Nhập Lại">
+        <input type="button" name="Huy" value="Đóng">
     </form>
+</fieldset>
+<br>
+<fieldset style="width: 40%; margin: 0 auto;">
+    <legend>Danh Sách Sản Phẩm</legend>
+<input type="button" name="ThemHangHoa" value="Thêm Hàng Hóa">
+<table style="margin: 0 auto;"  border="1px;">
+    <tr>
+        <th >STT</th>
+        <th>Mã Hàng</th>
+        <th style="width: 120px;">Tên Hàng</th>
+        <th>Số Lượng</th>
+        <th style="width: 40px;">Ngày Nhập Kho</th>
+        <th>Kho Lưu</th>
+        <th>Change</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>A123</td>
+        <td>Máy tính Asus</td>
+        <td>100</td>
+        <td>02/02/2020</td>
+        <td>Kho A</td>
+        <td><a href="#" target="_blank" title="Sửa Hàng Hóa">Sửa</a> | <a href="#" title="Xóa Hàng Hóa">Xóa</a> </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>A124</td>
+        <td>Máy tính Dell</td>
+        <td>120</td>
+        <td>05/02/2020</td>
+        <td>Kho B</td>
+        <td><a href="#" target="_blank" title="Sửa Hàng Hóa">Sửa</a> | <a href="#" title="Xóa Hàng Hóa">Xóa</a> </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>A125</td>
+        <td>Máy tính Hp</td>
+        <td>50</td>
+        <td>02/02/2020</td>
+        <td>Kho A</td>
+        <td><a href="#" target="_blank" title="Sửa Hàng Hóa">Sửa</a> | <a href="#" title="Xóa Hàng Hóa">Xóa</a> </td>
+    </tr>
+</table>
 </fieldset>
 </body>
 </html>
