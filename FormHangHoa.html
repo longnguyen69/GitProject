@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Form Hang Hoa</title>
+    <style>
+        #myform{
+            display: none;
+        }
+        #list{
+            display: none;
+        }
+    </style>
+    <script>
+        //let loginTag = document.getElementById("dangnhap"); thay thế đoạn mã script bằng biến gán
+        function login() {
+            document.getElementById("myform").style.display = "none";
+            document.getElementById("dangnhap").style.display = "none";
+            document.getElementById("list").style.display = "block";
+        }
+        function showForm() {
+            document.getElementById("myform").style.display = "block";
+        }
+        function closeform() {
+            document.getElementById("myform").style.display = "none";
+
+        }
+        function deleteProduct() {
+            let result = confirm("Bạn có muốn xóa không?");
+            if(result){
+                alert("Đã xóa thành công");
+            }else {
+                alert("Bỏ qua");
+            }
+            // result ? alert("Đã xóa thành công"):alert("Bỏ qua");
+        }
+        function logout() {
+            document.getElementById("dangnhap").style.display = "block";
+            document.getElementById("list").style.display = "none";
+            document.getElementById("myform").style.display = "none";
+        }
+    </script>
 </head>
 
 <body>
-<fieldset style="width: 30%; margin: 0 auto;">
+<fieldset style="width: 30%; margin: 0 auto;" id="dangnhap">
     <legend>Login System</legend>
     <table>
         <tr>
@@ -17,9 +54,13 @@
             <td>Password</td>
             <td><input type="password" name="Pass"></td>
         </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" name="DNST" value="Đăng Nhập" onclick="login()"></td>
+        </tr>
     </table>
 </fieldset><br>
-<fieldset style="width: 40%; margin: 0 auto;">
+<fieldset style="width: 40%; margin: 0 auto;" id="myform">
     <legend>NHẬP THÔNG TIN HÀNG HÓA</legend>
     <form method="POST" action="#">
         <table>
@@ -52,7 +93,7 @@
             </tr>
             <tr>
                 <td>Loại Hàng<sup style="color: red;">(*)</sup></td>
-                <td><input type="radio" name="1">Gia dụng <input type="radio" name="1">Điện tử <input type="radio" name="1">Thực phẩm</td>
+                <td><input type="radio" name="1">Gia dụng <input type="radio" name="1" checked>Điện tử <input type="radio" name="1">Thực phẩm</td>
             </tr>
             <tr>
                 <td>Đơn Vị Tính<sup style="color: red;">(*)</sup></td>
@@ -64,9 +105,9 @@
             </tr>
             <tr>
                 <td>Thuộc Tính<sup style="color: red;">(*)</sup></td>
-                <td><input type="checkbox">Hàng dễ vỡ<br>
+                <td><input type="checkbox" checked>Hàng dễ vỡ<br>
                 <input type="checkbox">Hàng đi trong ngày<br>
-                <input type="checkbox">Hàng lưu kho</td>
+                <input type="checkbox" checked>Hàng lưu kho</td>
             </tr>
             <tr>
                 <td>Mô Tả</td>
@@ -80,7 +121,7 @@
                 <td>Lưu Kho<sup style="color: red;">(*)</sup></td>
                 <td><select>
                     <option>Kho A</option>
-                    <option>Kho B</option>
+                    <option selected>Kho B</option>
                     <option>Kho C</option>
                     <option>Kho D</option>
                 </select></td>
@@ -89,13 +130,14 @@
 
         <input type="submit" name="btnNhap" value="Nhập Kho" style="margin-left: 35%;">
         <input type="reset" name="btnReset" value="Nhập Lại">
-        <input type="button" name="Huy" value="Đóng">
+        <input type="button" name="Huy" value="Đóng" onclick="closeform()">
     </form>
 </fieldset>
 <br>
-<fieldset style="width: 40%; margin: 0 auto;">
+<fieldset style="width: 40%; margin: 0 auto;" id="list">
     <legend>Danh Sách Sản Phẩm</legend>
-<input type="button" name="ThemHangHoa" value="Thêm Hàng Hóa">
+<input type="button" name="ThemHangHoa" value="Thêm Hàng Hóa" onclick="showForm()">
+    <input type="button" name="out" value="Logout" onclick="logout()">
 <table style="margin: 0 auto;"  border="1px;">
     <tr>
         <th >STT</th>
@@ -113,7 +155,7 @@
         <td>100</td>
         <td>02/02/2020</td>
         <td>Kho A</td>
-        <td><a href="#" target="_blank" title="Sửa Hàng Hóa">Sửa</a> | <a href="#" title="Xóa Hàng Hóa">Xóa</a> </td>
+        <td><input type="button" name="change" value="Sửa" onclick="showForm()"> | <input type="button" name="delete" value="Xóa" onclick="deleteProduct()"> </td>
     </tr>
     <tr>
         <td>2</td>
@@ -122,7 +164,7 @@
         <td>120</td>
         <td>05/02/2020</td>
         <td>Kho B</td>
-        <td><a href="#" target="_blank" title="Sửa Hàng Hóa">Sửa</a> | <a href="#" title="Xóa Hàng Hóa">Xóa</a> </td>
+        <td><input type="button" name="change" value="Sửa" onclick="showForm()"> | <input type="button" name="delete" value="Xóa" onclick="deleteProduct()"> </td>
     </tr>
     <tr>
         <td>3</td>
@@ -131,9 +173,12 @@
         <td>50</td>
         <td>02/02/2020</td>
         <td>Kho A</td>
-        <td><a href="#" target="_blank" title="Sửa Hàng Hóa">Sửa</a> | <a href="#" title="Xóa Hàng Hóa">Xóa</a> </td>
+        <td><input type="button" name="change" value="Sửa" onclick="showForm()"> | <input type="button" name="delete" value="Xóa" onclick="deleteProduct()"> </td>
     </tr>
 </table>
 </fieldset>
+<script>
+
+</script>
 </body>
 </html>
